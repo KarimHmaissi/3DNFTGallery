@@ -1,48 +1,13 @@
-import React, { Suspense, useState } from "react"
-import { Canvas, ThreeEvent, Vector3, useLoader } from "@react-three/fiber"
 import { PresentationControls, Stars } from "@react-three/drei"
-import { Mesh, TextureLoader } from "three"
+import { Canvas } from "@react-three/fiber"
+import { Suspense } from "react"
 
 import { NftData } from "../../services"
-import { useAppDispatch } from "../../app/hooks"
-import { addToHistory } from "./nftSlice"
+import { Image } from "./Image"
 import styles from "./NftDisplay.module.css"
 
 const generateRandomNumber = (min: number, max: number) => {
   return Math.random() * (max - min) + min
-}
-
-function Image(props: { url: string; position: Vector3 }) {
-  const { url, position } = props
-
-  const dispatch = useAppDispatch()
-
-  const myMesh = React.useRef<Mesh>(null)
-
-  const [isSelected, setIsSelected] = useState(false)
-
-  const texture = useLoader(TextureLoader, url)
-
-  const onClickHandler = (event: ThreeEvent<MouseEvent>) => {
-    event.stopPropagation()
-
-    if (isSelected) {
-      dispatch(addToHistory(url))
-    }
-    setIsSelected((isSelected) => !isSelected)
-  }
-
-  return (
-    <mesh
-      onClick={onClickHandler}
-      position={isSelected ? [0, 0, 1] : position}
-      ref={myMesh}
-      scale={isSelected ? 3 : [1, 1, 1]}
-    >
-      <planeBufferGeometry attach="geometry" args={[1, 1]} />
-      <meshBasicMaterial attach="material" map={texture} />
-    </mesh>
-  )
 }
 
 export function NftDisplay(props: { nftData: NftData | undefined }) {
