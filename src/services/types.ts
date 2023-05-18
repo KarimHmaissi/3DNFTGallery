@@ -1,23 +1,23 @@
 interface Contract {
   address: string
-  name: string
+  name: string | null
   symbol: string
-  totalSupply: null
+  totalSupply: string
   tokenType: string
   contractDeployer: string
   deployedBlockNumber: number
   openSeaMetadata: {
-    floorPrice: null
+    floorPrice: number
     collectionName: string
     safelistRequestStatus: string
     imageUrl: string
     description: string
     externalUrl: string
-    twitterUsername: null
+    twitterUsername: string
     discordUrl: null
     lastIngestedAt: string
   }
-  isSpam: boolean
+  isSpam: boolean | null
   spamClassifications: string[]
 }
 
@@ -26,22 +26,22 @@ interface Image {
   thumbnailUrl: string
   pngUrl: string
   contentType: string
-  size: string
+  size: number
   originalUrl: string
 }
 
 interface RawData {
   tokenUri: string
   metadata: Record<string, unknown>
-  error: string
+  error: string | null
 }
 
 interface OwnedNft {
   contract: Contract
   tokenId: string
   tokenType: string
-  name: null
-  description: null
+  name: string | null
+  description: string | null
   image: Image
   raw: RawData
   tokenUri: string
@@ -53,5 +53,5 @@ export interface NftData {
   ownedNfts: OwnedNft[]
   totalCount: number
   blockHash: string
-  pageKey: string
+  pageKey: string | null
 }
