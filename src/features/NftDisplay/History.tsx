@@ -2,7 +2,7 @@ import { useAppSelector } from "../../app/hooks"
 import styles from "./NftDisplay.module.css"
 import { selectHistory } from "./nftSlice"
 
-const History = () => {
+export const History = () => {
   const history = useAppSelector(selectHistory)
 
   return (
@@ -13,5 +13,3 @@ const History = () => {
     </div>
   )
 }
-
-export default History

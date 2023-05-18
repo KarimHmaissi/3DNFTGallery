@@ -1,8 +1,7 @@
 import { useEthers } from "@usedapp/core"
-import NftDisplay from "./features/NftDisplay/NftDisplay"
-import History from "./features/NftDisplay/History"
 import { useGetNftsByWalletAddressQuery } from "./services/NFTService"
-import WalletConnectButton from "./features/WalletConnectButton/WalletConnectButton"
+import { NftDisplay, History } from "./features/NftDisplay"
+import { WalletConnectButton } from "./features/WalletConnectButton"
 
 function App() {
   const { account } = useEthers()

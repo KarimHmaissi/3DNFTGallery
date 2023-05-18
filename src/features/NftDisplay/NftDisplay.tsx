@@ -45,7 +45,7 @@ function Image(props: { url: string; position: Vector3 }) {
   )
 }
 
-function NftDisplay(props: { nftData: NftData | undefined }) {
+export function NftDisplay(props: { nftData: NftData | undefined }) {
   const { nftData } = props
 
   return (
@@ -87,5 +87,3 @@ function NftDisplay(props: { nftData: NftData | undefined }) {
     </div>
   )
 }
-
-export default NftDisplay
